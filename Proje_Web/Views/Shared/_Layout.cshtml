@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cobra Fitness</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Proje_Web.styles.css" asp-append-version="true" />
+
+    <style>
+        /* Navbar Başlığını Ortalamak için Özel Stil */
+        .navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Menü Linklerini Kalınlaştırma ve Alt Çizgiyi Kaldırma */
+        .nav-link.ana-menu {
+            font-weight: bold; /* Yazıyı kalınlaştırır */
+            text-decoration: none; /* Alt çizgiyi kaldırır */
+            font-size: 1.1rem;
+            /* Yatay boşluklar Bootstrap sınıfları tarafından yönetilecektir */
+        }
+        .design{
+            color: green; /* Veya daha canli bir yeşil: #28a745 */
+            font-weight: bold; /* Yazıyı kalınlaştırır */
+            font-style: italic; /* İsteğe bağlı: Yazıyı eğik yapar */
+            text-shadow: 1px 1px 2px #ccc;
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+
+                <a class="design" asp-area="" asp-controller="Home" asp-action="Main">
+                     Cobra Fitness
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#anaMenuCollapse" aria-controls="anaMenuCollapse"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center" id="anaMenuCollapse">
+
+                    <ul class="navbar-nav mx-auto w-100 justify-content-around">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Randevu" asp-action="Index">
+                                📅 Randevu
+                            </a>
+                            
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Antrenor" asp-action="Index">
+                                🧑‍💻 Antrenor
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Hizmet" asp-action="Index">
+                                💰 Hizmet turleri 
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Cobra Fitness - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-decoration-none">Gizlilik</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

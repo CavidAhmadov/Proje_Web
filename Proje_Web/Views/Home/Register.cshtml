@@ -1,0 +1,74 @@
+﻿@model Proje_Web.Models.Uye
+
+@{
+    Layout = "~/Views/Shared/_LayoutSimple.cshtml";
+    ViewData["Title"] = "Kayit islemi";
+}
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-6">
+            <h3 class="text-primary mb-4">Kayıt girisi</h3>
+            <div class="p-4 border rounded shadow-sm" style="background-color: #f8f9fa;">
+
+                <form asp-action="Kayit" method="post">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="ad" class="form-label font-weight-bold">Kullanıcı Adı (Register)</label>
+                        <input asp-for="ad" class="form-control" />
+                        <span asp-validation-for="ad" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label asp-for="parola" class="form-label font-weight-bold">Parola</label>
+                        <input asp-for="parola" class="form-control" />
+                        <span asp-validation-for="parola" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary w-100">👤 Kayıtli olarak gir</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3 class="text-success mb-4">Üye Girişi (Uye)</h3>
+            <div class="p-4 border border-success rounded shadow" style="background-color: #f8f9fa;">
+
+                <form asp-action="Kaydet" method="post">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="ad" class="form-label font-weight-bold">Kullanıcı Adı (Uye)</label>
+                        <input asp-for="ad" class="form-control" />
+                        <span asp-validation-for="ad" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label asp-for="parola" class="form-label font-weight-bold">Şifre</label>
+                        <input asp-for="parola" class="form-control" />
+                        <span asp-validation-for="parola" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success w-100">🔑 Üye Ol</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+   

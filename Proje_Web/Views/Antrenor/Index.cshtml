@@ -1,0 +1,78 @@
+﻿@model List<Proje_Web.Models.Antrenor>
+
+@{
+    ViewData["Title"] = "Aktif Antrenör Raporu";
+}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-dark">
+            ✅ Sistemdeki Aktif Antrenörler
+        </h1>
+        <p class="lead text-muted">
+            Toplam **@Model.Count()** aktif eğitmen bulunmaktadır.
+        </p>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+
+                <div class="table-responsive shadow-lg rounded">
+                    <table class="table table-bordered table-striped table-hover">
+
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th style="width: 5%;">#ID</th>
+                                <th style="width: 30%;">Antrenör Adı Soyadı</th>
+                                <th>Uzmanlık Alanları</th>
+                                <th style="width: 20%;">İletişim</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var antrenor in Model)
+                            {
+                                <tr>
+                                    <td class="align-middle text-center fw-bold">@antrenor.Id</td>
+
+                                    <td class="fw-bold align-middle">
+                                        @antrenor.AdSoyad
+                                    </td>
+
+                                    <td class="align-middle">
+                                        @{
+                                            // Uzmanlık alanlarını yeşil etiketler halinde gösterir
+                                            var alanlar = antrenor.UzmanlikAlanlari?.Split(new[] { ',', '/' }, StringSplitOptions.RemoveEmptyEntries);
+                                        }
+
+                                        @if (alanlar != null)
+                                        {
+                                            foreach (var alan in alanlar)
+                                            {
+                                                <span class="badge bg-info text-dark me-1 my-1">
+                                                    @alan.Trim()
+                                                </span>
+                                            }
+                                        }
+                                    </td>
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center">
+            Sistemde görüntülenecek kayıtlı antrenör bulunmamaktadır.
+        </div>
+    }
+
+</div>

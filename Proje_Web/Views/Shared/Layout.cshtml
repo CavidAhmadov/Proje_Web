@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Spor Salonu Sistemi</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/css/custom_styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+
+                <div class="mx-auto order-0">
+                    <a class="navbar-brand text-warning" asp-area="" asp-controller="Home" asp-action="Main">
+                        🏋️‍♂️ SPOR SALONU YÖNETİM MERKEZİ 🏃‍♀️
+                    </a>
+                </div>
+
+                <div class="navbar-collapse collapse order-1">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Hizmetler">
+                                🕒 Çalışma Saatleri & Ücretler
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Antrenor" asp-action="Liste">
+                                🧑‍💻 Antrenör & Uzmanlık Alanları
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Randevu" asp-action="Olustur">
+                                📅 Randevu Sistemi
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-info" asp-area="" asp-controller="Uye" asp-action="Giris">
+                                🔑 Giriş Yap
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Spor Salonu Yönetimi
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

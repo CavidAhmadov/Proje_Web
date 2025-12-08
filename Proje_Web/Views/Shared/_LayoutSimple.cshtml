@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Uygulama Adı</title>
+
+    @* Standart CSS (Bootstrap ve Sizin CSS'iniz) *@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    @* Bu CSS satırları, tasarımı oluşturmak için gereklidir! *@
+    <style>
+        body {
+            /* Hafif gri veya yumuşak bir arka plan */
+            background-color: #f4f7f6;
+            /* Ekranın tamamını kaplamasını sağlar */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Ana içerik alanının dikey ortalanması için */
+        .content-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0; /* Üstten ve alttan dolgu */
+        }
+    </style>
+</head>
+<body>
+
+    @* --- Basit Başlık / Logo Alanı (Header) --- *@
+    <header class="py-3 text-center">
+        <h1 class="h4 fw-bold text-primary">Uygulamanızın Adı</h1>
+    </header>
+
+    @* --- ANA İÇERİK (Body) ALANI --- *@
+    <div class="content-wrapper">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @* --- Basit Alt Bilgi (Footer) --- *@
+    <footer class="footer text-muted border-top py-2 text-center">
+        &copy; @DateTime.Now.Year - Tüm Hakları Saklıdır
+    </footer>
+
+    @* Standart JS Kütüphaneleri *@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

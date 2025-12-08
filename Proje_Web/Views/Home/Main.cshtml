@@ -1,0 +1,72 @@
+﻿@* Bu View, otomatik olarak _Layout.cshtml'i kullanacaktır *@
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="row mt-5">
+
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4 h-100">
+            <h2 class="card-title text-primary mb-4">
+                <i class="bi bi-clock"></i> 🕒 Çalışma Saatleri
+            </h2>
+
+            <table class="table table-striped table-borderless">
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Günler</th>
+                        <th>Saatler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hafta İçi (Pzt-Cum)</td>
+                        <td>07:00 – 23:00</td>
+                    </tr>
+                    <tr>
+                        <td>Cumartesi</td>
+                        <td>09:00 – 21:00</td>
+                    </tr>
+                    <tr>
+                        <td>Pazar</td>
+                        <td>Kapalı</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="text-muted small mt-3">
+                * Resmi tatillerde farklı saatler uygulanabilir.
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4 h-100">
+            <h2 class="card-title mb-4" style="color: #28a745;">
+                 Cobra Fitness Hakkında
+            </h2>
+
+            <p class="card-text">
+                Cobra Fitness, son teknolojinin üstün uzmanlık eşliğinde sunulduğu, temiz, ferah ve motive edici bir spor ortamıdır.
+            </p>
+            <p class="card-text">
+                Kişiselleştirilmiş antrenman programları, son teknoloji ekipmanlar, grup dersleri ve birebir rehberlik ile hedeflerinize ulaşmanız için yanınızdayız.
+            </p>
+
+            <ul class="list-unstyled mt-3">
+                <li>✔️ Deneyimli Antrenör Kadrosu</li>
+                <li>✔️ Geniş ve Havalandırmalı Alan</li>
+                <li>✔️ Ücretsiz Deneme Dersi İmkanı</li>
+            </ul>
+
+            
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        // İsteğe bağlı, bu sayfaya özel JavaScript kodları buraya gelebilir.
+    </script>
+}
