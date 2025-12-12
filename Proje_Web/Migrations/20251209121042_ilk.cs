@@ -14,8 +14,8 @@ namespace Proje_Web.Migrations
                 name: "Uye_Tablo",
                 columns: table => new
                 {
-                    ad = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
-                    parola = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false)
+                    ad = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    parola = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {

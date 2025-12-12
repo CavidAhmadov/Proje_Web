@@ -1,9 +1,22 @@
+using Microsoft.EntityFrameworkCore;
+using Proje_Web.Models;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Program.cs
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<UyeContext>(options =>
+    options.UseSqlServer(connectionString) // PostgreSQL sa?lay?c?s?n? kullan
+);
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

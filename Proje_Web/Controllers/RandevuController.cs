@@ -2,13 +2,11 @@
 
 namespace Proje_Web.Controllers
 {
-    public class AntrenorController : Controller
+    public class RandevuController : Controller
     {
         public IActionResult Index()
         {
-        
-            return View(); // Listeyi View'a gönder
-            
+            return View();
         }
     }
 }

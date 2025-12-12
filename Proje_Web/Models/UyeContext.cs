@@ -1,15 +1,22 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Proje_Web.Models
 {
     public class UyeContext:DbContext
     {
-        public DbSet<Uye> Uye_Tablo { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected readonly IConfiguration Configuration;
+        public UyeContext(IConfiguration configuration)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Register;Trusted_Connection=True;");
+            Configuration = configuration;
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
+        }
+        public DbSet<Uye> Uye_Tablo { get; set; }
+       
        
     }
 }

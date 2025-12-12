@@ -7,12 +7,17 @@ namespace Proje_Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        
-        public HomeController(ILogger<HomeController> logger)
+        // ? 1. Context'in özel, salt okunur bir alan?n? tan?mlay?n.
+        private readonly UyeContext uyee;
+
+        // ? 2. Context'i Kurucu Metotta (Constructor) talep edin (Enjekte edin).
+        public HomeController(ILogger<HomeController> logger, UyeContext uyeContext)
         {
             _logger = logger;
+            uyee = uyeContext; // Enjekte edilen Context'i alana atay?n.
         }
-        private UyeContext uyee = new UyeContext();
+       
+       
         public IActionResult Register()
         {       
                return View();
