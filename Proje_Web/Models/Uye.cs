@@ -11,7 +11,7 @@ namespace Proje_Web.Models
         [Key]
         public string ad { get; set; }
 
-        [MinLength(3,ErrorMessage ="Minimum 3 harf lazim")]
+        [MinLength(3, ErrorMessage = "Minimum 3 harf lazim")]
         [Required(ErrorMessage = "Parola kismi gerekli")]
         [StringLength(10)]
         public string parola { get; set; }
