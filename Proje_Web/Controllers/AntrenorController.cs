@@ -7,7 +7,7 @@ namespace Proje_Web.Controllers
         public IActionResult Index()
         {
         
-            return View(); // Listeyi View'a gönder
+            return View(); // Listeyi View'a gönde
             
         }
     }
