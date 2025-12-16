@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<UyeContext>(options =>
-    options.UseSqlServer(connectionString) // PostgreSQL sa?lay?c?s?n? kullan
+    options.UseNpgsql(connectionString) // PostgreSQL sa?lay?c?s?n? kullan
 );
 
 var app = builder.Build();
