@@ -1,104 +1,63 @@
-﻿@* Hizmetler.cshtml *@
-@{
-    ViewData["Title"] = "Hizmet Türleri ve Fiyat Listesi";
-}
+﻿@model IEnumerable<Proje_Web.Models.HizmetTurleri>
 
 <div class="container mt-5">
-
-    <div class="text-center mb-5">
-        <h1 class="display-4" style="color: #28a745; font-weight: 700;">
-            Cobra Fitness Hizmetleri ve Ücretlendirme
-        </h1>
-        <p class="lead text-muted">
-            İhtiyaçlarınıza en uygun programı seçin ve fitness yolculuğunuza başlayın!
-        </p>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-
-            <div class="table-responsive shadow-lg rounded">
-                <table class="table table-hover table-striped">
-                    <thead class="bg-primary text-white">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0"><i class="fas fa-concierge-bell me-2"></i>Hizmet Türleri</h3>
+            
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
                         <tr>
-                            <th style="width: 25%;">Hizmet Türü</th>
-                            <th>Detaylar</th>
-                            <th style="width: 15%;">Süre Seçeneği</th>
-                            <th style="width: 15%;">Ücret (₺)</th>
+                            <th class="ps-4">@Html.DisplayNameFor(model => model.Hizmet_turu)</th>
+                            <th>@Html.DisplayNameFor(model => model.Fiyat)</th>
+                            <th>@Html.DisplayNameFor(model => model.sure)</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr>
-                            <td rowspan="2" class="align-middle fw-bold">🏋️‍♀️ Klasik Fitness Paketi</td>
-                            <td class="align-middle">Tüm kardiyo ve serbest ağırlık alanlarına sınırsız erişim.</td>
-                            <td>1 Ay</td>
-                            <td>850 TL</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>6 Ay</td>
-                            <td>4.500 TL</td>
-                        </tr>
-
-                        <tr>
-                            <td rowspan="2" class="align-middle fw-bold">🧘‍♀️ Yoga & Meditasyon</td>
-                            <td class="align-middle">Haftada 3 seans grup yoga dersi (Hatha, Vinyasa).</td>
-                            <td>1 Ay</td>
-                            <td>700 TL</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>3 Ay</td>
-                            <td>1.950 TL</td>
-                        </tr>
-
-                        <tr>
-                            <td rowspan="2" class="align-middle fw-bold">🤸‍♂️ Reformer Pilates Grup</td>
-                            <td class="align-middle">Haftada 2 seans, maksimum 4 kişilik küçük grup pilates dersi.</td>
-                            <td>1 Ay</td>
-                            <td>1.200 TL</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>3 Ay</td>
-                            <td>3.300 TL</td>
-                        </tr>
-
-                        <tr class="table-dark text-center">
-                            <td colspan="4" class="fw-bold">Özel Ders (PT) Paketleri</td>
-                        </tr>
-
-                        <tr>
-                            <td rowspan="2" class="align-middle fw-bold">🥇 Birebir PT (Personal Training)</td>
-                            <td class="align-middle">Kişiselleştirilmiş antrenör ile hedefe yönelik 60 dakikalık dersler.</td>
-                            <td>10 Seans</td>
-                            <td>4.500 TL</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>20 Seans</td>
-                            <td>8.000 TL</td>
-                        </tr>
-
-                        <tr>
-                            <td class="align-middle fw-bold">🥈 Duo PT (2 Kişilik)</td>
-                            <td class="align-middle">Bir antrenör eşliğinde arkadaşınızla birlikte antrenman.</td>
-                            <td>10 Seans</td>
-                            <td>3.000 TL (Kişi Başı)</td>
-                        </tr>
-
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 align-middle fw-semibold text-dark">
+                                    @Html.DisplayFor(modelItem => item.Hizmet_turu)
+                                </td>
+                                <td class="align-middle text-success fw-bold">
+                                    @item.Fiyat
+                                </td>
+                                <td class="align-middle">
+                                    <span class="badge bg-info text-dark">@item.sure </span>
+                                </td>
+                               
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
-
-            <p class="text-end mt-4">
-                <i class="bi bi-info-circle"></i> Fiyatlara KDV dahildir. Özel indirimler için kulübümüzle iletişime geçiniz.
-            </p>
-
         </div>
     </div>
-
-    
-
 </div>
+
+@* FontAwesome ikonları için bu linki Layout dosyanıza veya buraya ekleyebilirsiniz *@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+<style>
+    .table thead th {
+        border-top: none;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
+        transition: 0.3s;
+    }
+
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+</style>

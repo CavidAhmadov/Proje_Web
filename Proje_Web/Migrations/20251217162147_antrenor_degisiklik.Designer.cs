@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Proje_Web.Models;
@@ -11,9 +12,11 @@ using Proje_Web.Models;
 namespace Proje_Web.Migrations
 {
     [DbContext(typeof(UyeContext))]
-    partial class UyeContextModelSnapshot : ModelSnapshot
+    [Migration("20251217162147_antrenor_degisiklik")]
+    partial class antrenor_degisiklik
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

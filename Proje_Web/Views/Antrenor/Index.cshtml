@@ -1,1 +1,51 @@
-﻿
+﻿@model IEnumerable<Proje_Web.Models.Antrenor>
+
+@{
+    ViewData["Title"] = "Antrenor bilgileri";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.isim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uzmanlik_alani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hizmet_turleri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musaitlik_saatleri)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isim)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uzmanlik_alani)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hizmet_turleri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.musaitlik_saatleri)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

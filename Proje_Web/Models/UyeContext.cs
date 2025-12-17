@@ -19,6 +19,8 @@ namespace Proje_Web.Models
         }
         public DbSet<Uye> Uye_Tablo { get; set; }
         public DbSet<Antrenor> Antrenor_Tablo { get; set; }
-       
+        public DbSet<HizmetTurleri> Hizmet_Turleri_Tablosu { get; set; }
+        public DbSet<Randevu> Randevu_tablosu { get; set; }
+
     }
 }

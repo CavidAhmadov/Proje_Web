@@ -1,0 +1,96 @@
+﻿@model Proje_Web.Models.Randevu
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h4>Randevu olustur</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+
+            
+            <div class="form-group mb-3">
+                @* Etiket (Label) dışarıda olmalı *@
+                <label asp-for="Egitmen" class="control-label fw-bold"></label>
+
+                @* Select yapısı *@
+                <select asp-for="Egitmen" class="form-select" asp-items="ViewBag.EgitmenList">
+                    <option value="">-- Lütfen Bir Eğitmen Seçin --</option>
+                </select>
+
+                @* Doğrulama mesajı *@
+                <span asp-validation-for="Egitmen" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Sunduğu Hizmetler:</label>
+                <select id="hizmetSelect" asp-for="HizmetTuru" class="form-select" disabled>
+                    <option value="">-- Önce Eğitmen Seçin --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RandevuTarihi" class="control-label"></label>
+                <input asp-for="RandevuTarihi" class="form-control" />
+                <span asp-validation-for="RandevuTarihi" class="text-danger"></span>
+            </div>
+            
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById("egitmenSelect").addEventListener("change", function () {
+            // Seçilen eğitmen ismini (string) alıyoruz
+            var secilenEgitmen = this.value;
+            var hizmetSelect = document.getElementById("hizmetSelect");
+
+            // Temizlik ve Hazırlık
+            hizmetSelect.innerHTML = '<option value="">Yükleniyor...</option>';
+            hizmetSelect.disabled = true;
+
+            if (secilenEgitmen) {
+                // Senin metodun: GetHizmetlerByEgitmen(string egitmenId)
+                // NOT: '/Randevu/' kısmını kendi Controller adınla değiştir (Örn: /Hizmet/)
+                fetch('/Randevu/GetHizmetlerByEgitmen?egitmenId=' + encodeURIComponent(secilenEgitmen))
+                    .then(response => response.json())
+                    .then(data => {
+                        hizmetSelect.innerHTML = '<option value="">-- Hizmet Seçin --</option>';
+
+                        // Senin Select kısmındaki isimler: id ve ad
+                        data.forEach(item => {
+                            var option = document.createElement("option");
+                            option.value = item.ad; // Hizmetin adını kaydediyoruz
+                            option.text = item.ad;  // Ekranda hizmetin adını gösteriyoruz
+                            hizmetSelect.appendChild(option);
+                        });
+
+                        hizmetSelect.disabled = false;
+                    })
+                    .catch(error => {
+                        console.error('Hata:', error);
+                        hizmetSelect.innerHTML = '<option value="">Veri alınamadı!</option>';
+                    });
+            } else {
+                hizmetSelect.innerHTML = '<option value="">-- Önce Eğitmen Seçin --</option>';
+            }
+        });
+    </script>
+}
