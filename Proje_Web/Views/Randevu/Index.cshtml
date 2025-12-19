@@ -22,7 +22,7 @@
                             <th>@Html.DisplayNameFor(model => model.HizmetAy)</th> @* HizmetAy yerine Süre/Ay başlığı *@
                             <th>@Html.DisplayNameFor(model => model.HizmetUcret)</th>
                             <th>@Html.DisplayNameFor(model => model.Egitmen)</th>
-                            
+                            <th>@Html.DisplayNameFor(model => model.Uzmanlink_alani_hocanin)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +47,12 @@
                                         </div>
                                         <span>@item.Egitmen</span>
                                     </div>
+                                </td>
+                                <td>
+                                    <span class="text-muted">
+                                        <i class="fa-solid fa-medal me-1 text-warning"></i>
+                                        @item.Uzmanlink_alani_hocanin
+                                    </span>
                                 </td>
                                
                             </tr>

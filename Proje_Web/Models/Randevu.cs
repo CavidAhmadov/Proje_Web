@@ -28,5 +28,7 @@ namespace Proje_Web.Models
         [Display(Name = "Eğitmen")]
         public string Egitmen { get; set; }
 
+        public string Uzmanlink_alani_hocanin { get; set; }
+
     }
 }
