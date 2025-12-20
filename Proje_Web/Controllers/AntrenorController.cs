@@ -15,9 +15,18 @@ namespace Proje_Web.Controllers
 
         public IActionResult Index()
         {
+            
             var liste = _context.Antrenor_Tablo.ToList();
             return View(liste);
             
+        }
+
+        [HttpGet]
+        public IActionResult GetAntrenorlerApi()
+        {
+            // Veritabanındaki Antrenor_Tablo verilerini JSON olarak döndürür
+            var liste = _context.Antrenor_Tablo.ToList();
+            return Json(liste); // REST API çıktısı burasıdır
         }
     }
 }

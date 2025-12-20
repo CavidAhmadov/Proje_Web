@@ -24,22 +24,24 @@
             font-size: 1.1rem;
             /* Yatay boşluklar Bootstrap sınıfları tarafından yönetilecektir */
         }
-        .design{
+
+        .design {
             color: green; /* Veya daha canli bir yeşil: #28a745 */
             font-weight: bold; /* Yazıyı kalınlaştırır */
             font-style: italic; /* İsteğe bağlı: Yazıyı eğik yapar */
             text-shadow: 1px 1px 2px #ccc;
-            text-decoration:none;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <header>
+       
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
 
-                <a class="design" asp-area="" asp-controller="Home" asp-action="Main">
-                     Cobra Fitness
+                <a class="design" asp-area="" asp-controller="Home" asp-action="Admin">
+                    Cobra Fitness
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#anaMenuCollapse" aria-controls="anaMenuCollapse"
@@ -52,26 +54,21 @@
                     <ul class="navbar-nav mx-auto w-100 justify-content-around">
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Randevu" asp-action="Index">
-                                📅 Randevu
+                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Admin" asp-action="randevu">
+                                📅 Randevu(admin)
                             </a>
-                            
+
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Antrenor" asp-action="Index">
-                                🧑‍💻 Antrenor
+                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Admin" asp-action="antenor">
+                                🧑‍💻 Antrenor(admin)
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Hizmet" asp-action="Index">
-                                💰 Hizmet turleri 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Home" asp-action="Yapayzeka">
-                                Yapay zeka Destekli Antrenman
+                            <a class="nav-link text-dark ana-menu" asp-area="" asp-controller="Admin" asp-action="hizmet">
+                                💰 Hizmet turleri(admin)
                             </a>
                         </li>
                     </ul>

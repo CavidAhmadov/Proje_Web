@@ -70,5 +70,21 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+   @*Hata mesajidir*@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // C# tarafındaki TempData'yı JavaScript değişkenine alıyoruz
+        var hata = '@TempData["hata"]';
+
+        if (hata) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata!',
+                text: hata,
+                confirmButtonText: 'Tamam',
+                confirmButtonColor: '#3085d6'
+            });
+        }
+    </script>
 }
-   

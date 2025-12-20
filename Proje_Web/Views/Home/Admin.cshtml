@@ -1,7 +1,11 @@
 ﻿@* Bu View, otomatik olarak _Layout.cshtml'i kullanacaktır *@
 @{
-    ViewData["Title"] = "Ana Sayfa";
+    ViewData["Title"] = "Admin panel-Ana sayfa";
+    Layout = "~/Views/Shared/Admin.cshtml";
 }
+@model IEnumerable<Proje_Web.Models.Uye>
+
+
 <div class="row mt-3">
     <div class="col-12 text-end">
         <a href="/Home/Register" class="btn btn-outline-danger shadow-sm">
@@ -9,8 +13,9 @@
         </a>
     </div>
 </div>
-<div class="row mt-5">
 
+<div class="row mt-5">
+    <h1 style="color:red">Admin paneli </h1>
     <div class="col-md-6">
         <div class="card shadow-sm p-4 h-100">
             <h2 class="card-title text-primary mb-4">
@@ -49,7 +54,7 @@
     <div class="col-md-6">
         <div class="card shadow-sm p-4 h-100">
             <h2 class="card-title mb-4" style="color: #28a745;">
-                 Cobra Fitness Hakkında
+                Cobra Fitness Hakkında
             </h2>
 
             <p class="card-text">
@@ -64,8 +69,31 @@
                 <li>✔️ Geniş ve Havalandırmalı Alan</li>
                 <li>✔️ Ücretsiz Deneme Dersi İmkanı</li>
             </ul>
-
             
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th class="py-3 px-4" style="width: 50%;">👤 Kullanıcı Adı</th>
+                            <th class="py-3 px-4" style="width: 50%;">🔑 Parola</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="px-4 fw-bold text-dark">@item.ad</td>
+                                <td class="px-4">
+                                    <span class="badge bg-light text-danger border">
+                                        @item.parola
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 

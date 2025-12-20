@@ -1,0 +1,32 @@
+﻿@model Proje_Web.Models.HizmetTurleri
+
+@{
+    ViewData["Title"] = "Delete islemi ";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div>
+   
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fiyat)
+
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sure)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sure)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete_hi" method="post">
+        <input type="hidden" asp-for="Hizmet_turu" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="hizmet">Geri</a>
+    </form>
+</div>

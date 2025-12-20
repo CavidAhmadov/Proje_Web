@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Proje_Web.Models.Randevu>
 @{
-    ViewData["Title"] = "Randevu olusturma";
+    ViewData["Title"] = "Admin Paneli-Randevu olusturma";
+    Layout = "~/Views/Shared/Admin.cshtml";
 }
 @* FontAwesome İkonları için bu linki ekliyoruz *@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -9,9 +10,7 @@
     <div class="card shadow-lg border-0">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-3">
             <h5 class="mb-0"><i class="fa-solid fa-calendar-check me-2"></i> Randevu Listesi</h5>
-            <a asp-action="Create" class="btn btn-success btn-sm shadow-sm">
-                <i class="fa-solid fa-plus me-1"></i> Yeni Randevu Oluştur
-            </a>
+            
         </div>
 
         <div class="card-body p-0">
@@ -25,7 +24,7 @@
                             <th>@Html.DisplayNameFor(model => model.HizmetUcret)</th>
                             <th>@Html.DisplayNameFor(model => model.Egitmen)</th>
                             <th>@Html.DisplayNameFor(model => model.Uzmanlink_alani_hocanin)</th>
-
+                            <th>islemler</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +56,10 @@
                                         @item.Uzmanlink_alani_hocanin
                                     </span>
                                 </td>
-                               
+                                <td>
+                                    <a asp-action="RandevuDuzenle" asp-route-id="@item.Id" class="admin-btn btn-edit">Düzenle</a>
+                                    <a asp-action="RandevuSilOnay" asp-route-id="@item.Id" class="admin-btn btn-delete">Sil</a>
+                                </td>
                             </tr>
                         }
                     </tbody>
@@ -103,4 +105,40 @@
     a {
         text-decoration: none !important;
     }
+
+    .admin-btn {
+        display: inline-block;
+        padding: 6px 15px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Düzenle Butonu */
+    .btn-edit {
+        color: #ffc107;
+        border: 1px solid #ffc107;
+        background-color: transparent;
+    }
+
+        .btn-edit:hover {
+            background-color: #ffc107;
+            color: #000;
+            box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+        }
+
+    /* Sil Butonu */
+    .btn-delete {
+        color: #dc3545;
+        border: 1px solid #dc3545;
+        background-color: transparent;
+    }
+
+        .btn-delete:hover {
+            background-color: #dc3545;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+        }
 </style>

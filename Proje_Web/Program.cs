@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Proje_Web.Models;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Proje_Web.Services;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<UyeContext>(options =>
     options.UseNpgsql(connectionString) // PostgreSQL sa?lay?c?s?n? kullan
 );
-
+builder.Services.AddScoped<GeminiAIService>();//Servis 
 var app = builder.Build();
 
 
@@ -35,6 +37,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Main}/{id?}");
+    pattern: "{controller=Home}/{action=Register}/{id?}");
 
 app.Run();

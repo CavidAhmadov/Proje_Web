@@ -1,0 +1,40 @@
+﻿@model Proje_Web.Models.HizmetTurleri
+
+@{
+    ViewData["Title"] = "Edit_hi";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h1>Edit_hi</h1>
+
+<h4>HizmetTurleri</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit_hi">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Hizmet_turu" />
+            <div class="form-group">
+                <label asp-for="Fiyat" class="control-label"></label>
+                <input asp-for="Fiyat" class="form-control" />
+                <span asp-validation-for="Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sure" class="control-label"></label>
+                <input asp-for="sure" class="form-control" />
+                <span asp-validation-for="sure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="hizmet">Geri</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

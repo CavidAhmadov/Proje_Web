@@ -5,10 +5,10 @@ namespace Proje_Web.Models
     public class Antrenor
     {
         [Key]
-       
+        [Display(Name = "Antrenor Id")]
         public string Id { get; set; }
 
-        [Display(Name = "Isimler")]
+        [Display(Name = "Ismi")]
         [Required(ErrorMessage = "Isim alani zorunludur")]
         public string isim { get; set; }
         [Required(ErrorMessage ="Uzmanlik alani yazilmalidir")]
@@ -19,7 +19,7 @@ namespace Proje_Web.Models
         public string hizmet_turleri {  get; set; }
         [Required(ErrorMessage = "musaitlik saati alani yazilmalidir")]
 
-        [Display(Name = "Musaitlik saatleri")]
+        [Display(Name = "Musaitlik saatleri(örg:09:00-13:00)")]
         public string musaitlik_saatleri { get; set; }
     }
 }

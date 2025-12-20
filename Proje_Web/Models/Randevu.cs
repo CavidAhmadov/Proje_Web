@@ -18,11 +18,11 @@ namespace Proje_Web.Models
         [Required(ErrorMessage = "Hizmet Turu zorunludur")]
         public string HizmetTuru { get; set; }
 
-        [Display(Name = "Hizmet Suresi")]
-        public string HizmetAy {  get; set; }
+        [Display(Name = "Hizmet Suresi(Ay)")]
+        public int HizmetAy {  get; set; }
 
         [Display(Name = "Hizmet ucreti")]
-        public string HizmetUcret { get; set; }
+        public int HizmetUcret { get; set; }
 
         [Required(ErrorMessage ="Egitmen girilmelidir")]
         [Display(Name = "Eğitmen")]

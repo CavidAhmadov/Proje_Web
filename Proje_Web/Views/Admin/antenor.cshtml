@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Proje_Web.Models.Antrenor>
+
+@* Bu View, otomatik olarak _Layout.cshtml'i kullanacaktır *@
+@{
+    ViewData["Title"] = "Admin panel-Antrenor bilgileri";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+
+
+<style>
+    .admin-btn {
+        display: inline-block;
+        padding: 6px 15px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Düzenle Butonu */
+    .btn-edit {
+        color: #ffc107;
+        border: 1px solid #ffc107;
+        background-color: transparent;
+    }
+
+        .btn-edit:hover {
+            background-color: #ffc107;
+            color: #000;
+            box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+        }
+
+    /* Sil Butonu */
+    .btn-delete {
+        color: #dc3545;
+        border: 1px solid #dc3545;
+        background-color: transparent;
+    }
+
+        .btn-delete:hover {
+            background-color: #dc3545;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+        }
+
+    /* Ekle Butonu Özel Stili */
+    .btn-add {
+        color: #28a745; /* Yeşil metin */
+        border: 1px solid #28a745; /* Yeşil kenarlık */
+        background-color: transparent;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px; /* İkon ile metin arası boşluk */
+    }
+
+        .btn-add:hover {
+            background-color: #28a745; /* Üzerine gelince içi dolsun */
+            color: #fff; /* Metin beyaz olsun */
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); /* Hafif parlama efekti */
+            transform: translateY(-1px); /* Küçük bir yükselme efekti */
+        }
+
+    /* Genel buton düzenlemesi (Eğer admin-btn sınıfın yoksa) */
+    .admin-btn {
+        text-decoration: none;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease-in-out;
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.isim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uzmanlik_alani)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hizmet_turleri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.musaitlik_saatleri)
+            </th>
+            <th>
+                Islemler
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Uzmanlik_alani)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hizmet_turleri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.musaitlik_saatleri)
+                </td>
+                <td>
+                    <a asp-controller="Admin" asp-action="Edit" asp-route-id="@item.Id" class="admin-btn btn-edit">Düzenle</a>
+                    <a asp-controller="Admin" asp-action="Delete_an" asp-route-id="@item.Id" class="admin-btn btn-delete">Sil</a>
+                    <a asp-controller="Admin" asp-action="Add_an" asp-route-id="@item.Id" class="admin-btn btn-add">Ekle</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>

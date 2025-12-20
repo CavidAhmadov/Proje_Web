@@ -7,7 +7,8 @@ namespace Proje_Web.Models
     {
         [MinLength(3,ErrorMessage ="Minimum 3 harf lazim")]
         [Required(ErrorMessage ="isim kismi gerekli")]
-        [StringLength(10)]
+        [StringLength(30)]
+        [EmailAddress(ErrorMessage ="mail icin @ gerekli ")]
         [Key]
         public string ad { get; set; }
 

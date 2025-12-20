@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Proje_Web.Models.HizmetTurleri>
+@{
+    ViewData["Title"] = "Admin panel-Hizmet bilgileri";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0"><i class="fas fa-concierge-bell me-2"></i>Hizmet Türleri</h3>
+
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">@Html.DisplayNameFor(model => model.Hizmet_turu)</th>
+                            <th>@Html.DisplayNameFor(model => model.Fiyat)</th>
+                            <th>@Html.DisplayNameFor(model => model.sure)</th>
+                            <th>islemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 align-middle fw-semibold text-dark">
+                                    @Html.DisplayFor(modelItem => item.Hizmet_turu)
+                                </td>
+                                <td class="align-middle text-success fw-bold">
+                                    @item.Fiyat
+                                </td>
+                                <td class="align-middle">
+                                    <span class="badge bg-info text-dark">@item.sure </span>
+                                </td>
+                                <td>
+                                    <a asp-action="Edit_hi" asp-route-id="@item.Hizmet_turu" class="admin-btn btn-edit">Düzenle</a>
+                                    <a asp-action="Delete_hi" asp-route-id="@item.Hizmet_turu" class="admin-btn btn-delete">Sil</a>
+                                    <a  asp-action="Add_hi" asp-route-id="@item.Hizmet_turu" class="admin-btn btn-add">Ekle</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* FontAwesome ikonları için bu linki Layout dosyanıza veya buraya ekleyebilirsiniz *@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+<style>
+    .table thead th {
+        border-top: none;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
+        transition: 0.3s;
+    }
+
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .admin-btn {
+        display: inline-block;
+        padding: 6px 15px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Düzenle Butonu */
+    .btn-edit {
+        color: #ffc107;
+        border: 1px solid #ffc107;
+        background-color: transparent;
+    }
+
+        .btn-edit:hover {
+            background-color: #ffc107;
+            color: #000;
+            box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+        }
+
+    /* Sil Butonu */
+    .btn-delete {
+        color: #dc3545;
+        border: 1px solid #dc3545;
+        background-color: transparent;
+    }
+
+        .btn-delete:hover {
+            background-color: #dc3545;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+        }
+    /* Ekle Butonu Özel Stili */
+    .btn-add {
+        color: #28a745; /* Yeşil metin */
+        border: 1px solid #28a745; /* Yeşil kenarlık */
+        background-color: transparent;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px; /* İkon ile metin arası boşluk */
+    }
+
+        .btn-add:hover {
+            background-color: #28a745; /* Üzerine gelince içi dolsun */
+            color: #fff; /* Metin beyaz olsun */
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); /* Hafif parlama efekti */
+            transform: translateY(-1px); /* Küçük bir yükselme efekti */
+        }
+
+    /* Genel buton düzenlemesi (Eğer admin-btn sınıfın yoksa) */
+    .admin-btn {
+        text-decoration: none;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.2s ease-in-out;
+    }
+</style>

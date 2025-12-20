@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Antrenor bilgileri";
+    
+    
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -22,30 +24,45 @@
             <th>
                 @Html.DisplayNameFor(model => model.musaitlik_saatleri)
             </th>
-            <th></th>
+            
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+        @foreach (var item in Model) {
+            <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.isim)
                 </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Uzmanlik_alani)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.hizmet_turleri)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.musaitlik_saatleri)
-            </td>
-            <td>
-                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-            </td>
-        </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Uzmanlik_alani)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hizmet_turleri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.musaitlik_saatleri)
+                </td>
+                
+            </tr>
+       
 }
     </tbody>
+    <hr />
+    <div id="api-control" class="alert alert-secondary">
+        <small><i class="bi bi-info-circle"></i> Sistem Notu: Bu sayfadaki veriler ayrıca REST API uç noktası üzerinden doğrulanmaktadır.</small>
+    </div>
+
+    <script>
+        // Bu fonksiyon REST API kullanarak veritabanı ile iletişim kurar
+        async function testRestApi() {
+            try {
+                const response = await fetch('/Antrenor/GetAntrenorlerApi');
+                const data = await response.json();
+                console.log("REST API üzerinden gelen antrenörler:", data);
+            } catch (e) {
+                console.error("API bağlantı hatası!", e);
+            }
+        }
+        testRestApi();
+    </script>
 </table>

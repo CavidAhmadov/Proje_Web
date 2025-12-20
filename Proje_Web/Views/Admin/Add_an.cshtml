@@ -1,0 +1,50 @@
+﻿@model Proje_Web.Models.Antrenor
+
+@{
+    ViewData["Title"] = "Add_an";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h1>Antenor ekle</h1>
+
+<h4>Antrenor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add_an" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="isim" class="control-label"></label>
+                <input asp-for="isim" class="form-control" />
+                <span asp-validation-for="isim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uzmanlik_alani" class="control-label"></label>
+                <input asp-for="Uzmanlik_alani" class="form-control" />
+                <span asp-validation-for="Uzmanlik_alani" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="hizmet_turleri" class="control-label"></label>
+                <input asp-for="hizmet_turleri" class="form-control" />
+                <span asp-validation-for="hizmet_turleri" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="musaitlik_saatleri" class="control-label"></label>
+                <input asp-for="musaitlik_saatleri" class="form-control" />
+                <span asp-validation-for="musaitlik_saatleri" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" >Olustur</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="antenor">Geri</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -8,6 +8,7 @@ namespace Proje_Web.Models
         [Display(Name ="Ogrenci ismi:")]
         [Required(ErrorMessage ="Bu alan zorunlu olmasi lazim ")]
         [MinLength(2)]
+
         public string Isim {  get; set; }
 
         [Display(Name = "Ogrenci parolasi")]

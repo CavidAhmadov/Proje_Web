@@ -1,0 +1,76 @@
+﻿@model Proje_Web.Models.AIRecommendationViewModel
+
+<div class="container mt-5">
+    <div class="card shadow border-0">
+        <div class="card-header bg-dark text-white text-center">
+            <h2 class="mb-0">Yapay Zeka Destekli Antrenman & Diyet</h2>
+        </div>
+        <div class="card-body p-4">
+            <form asp-controller="Home" asp-action="Yapayzeka" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="fw-bold">Boy (cm):</label>
+                        <input asp-for="BoyCm" class="form-control" placeholder="Örn: 180" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="fw-bold">Kilo (kg):</label>
+                        <input asp-for="KiloKg" class="form-control" placeholder="Örn: 95" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="fw-bold">Vücut Durumunuz:</label>
+                        <input asp-for="VucutTipi" class="form-control" placeholder="Örn: Kilolu, yağlı, zayıf..." required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="fw-bold">Vücut Fotoğrafı (Opsiyonel - Daha kesin sonuç verir):</label>
+                    <input asp-for="ResimDosyasi" type="file" class="form-control" accept="image/*">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg mt-3 w-100">
+                    <i class="bi bi-magic"></i> Yapay Zeka ile Planı Oluştur
+                </button>
+            </form>
+
+            @if (!string.IsNullOrEmpty(Model.HataMesaji))
+            {
+                <div class="alert alert-danger mt-4">@Model.HataMesaji</div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.VucutTahmini))
+            {
+                <div class="mt-5 border-top pt-4">
+                    <h4 class="text-primary mb-3"><i class="bi bi-journal-check"></i> Size Özel Plan ve Analiz</h4>
+                    <div class="ai-response-container bg-light p-4 rounded shadow-sm border">
+                        @Html.Raw(Model.VucutTahmini)
+                    </div>
+                </div>
+            }
+
+            <style>
+                /* Gelen şekil ve resimlerin kutuya tam sığması için */
+                .ai-response-container img {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: 10px;
+                    display: block;
+                    margin: 20px auto;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                }
+
+                .ai-response-container svg {
+                    max-width: 100%;
+                    height: auto;
+                    display: block;
+                    margin: 20px auto;
+                }
+
+                .ai-response-container table {
+                    width: 100%;
+                    background: white;
+                    margin-top: 15px;
+                }
+            </style>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model Proje_Web.Models.Randevu
+
+@{
+    ViewData["Title"] = "Randevu Düzenle";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Randevu Güncelleme</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="RandevuDuzenle" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                @* ID GİZLİ OLMALI - Bu olmazsa güncelleme yapmaz *@
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label class="fw-bold">Randevu Tarihi :</label>
+                        <input asp-for="RandevuTarihi" class="form-control" type="datetime-local" />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="fw-bold">Eğitmen Değiştir :</label>
+                        <select asp-for="Egitmen" class="form-control" asp-items="ViewBag.Egitmenler">
+                            <option value="">-- Hoca Seçin --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="fw-bold">Hizmet Türü :</label>
+                        <select asp-for="Uzmanlink_alani_hocanin" class="form-control" asp-items="ViewBag.Hizmetler">
+                            <option value="">-- Hizmet Seçin --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr />
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success px-5">Güncelle</button>
+                    <a asp-action="randevu" class="btn btn-secondary">Vazgeç</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

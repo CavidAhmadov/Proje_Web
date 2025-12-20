@@ -133,6 +133,30 @@
             }
 
         });
+                              document.querySelector("#RandevuTarihi").addEventListener("change", function () {
+            const secilenTarih = this.value; // Örn: 2023-10-25T14:30
+            const egitmenSelect = document.querySelector("#egitmenSelect");
+            const egitmenIsmi = egitmenSelect.value;
 
+            if (!egitmenIsmi) {
+                alert("Lütfen önce bir eğitmen seçiniz!");
+                this.value = "";
+                return;
+            }
+
+            if (secilenTarih) {
+                // C# KontrolEt metoduna istek atıyoruz
+                fetch(`/Randevu/KontrolEt?egitmenIsmi=${encodeURIComponent(egitmenIsmi)}&secilenTarih=${secilenTarih}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.uygun === false) {
+                            // Eğer hoca o saatte çalışmıyorsa veya randevusu doluysa
+                            alert(data.mesaj);
+                            this.value = ""; // Seçimi temizle
+                        }
+                    })
+                    .catch(err => console.error("Hata:", err));
+            }
+        });
     </script>
 }
