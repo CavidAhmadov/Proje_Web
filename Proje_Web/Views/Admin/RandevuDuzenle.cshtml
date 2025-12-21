@@ -41,7 +41,30 @@
                 <hr />
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-success px-5">Güncelle</button>
-                    <a asp-action="randevu" class="btn btn-secondary">Vazgeç</a>
+                    <style>
+                        .btn-geri {
+                            background-color: #6c757d; /* Koyu Gri / Mevsimlik renk */
+                            color: white !important;
+                            text-decoration: none !important; /* Alt çizgiyi kesin olarak kaldırır */
+                            padding: 10px 25px;
+                            border-radius: 8px;
+                            display: inline-block;
+                            font-weight: 500;
+                            transition: background-color 0.3s ease, transform 0.2s ease;
+                            border: none;
+                        }
+
+                            .btn-geri:hover {
+                                background-color: #5a6268; /* Üzerine gelince biraz daha koyulaşır */
+                                text-decoration: none !important; /* Hover durumunda da çizgi çıkmaz */
+                                transform: scale(1.02); /* Çok hafif büyüme efekti */
+                                color: white !important;
+                            }
+                    </style>
+
+                    <a asp-action="randevu" class="btn-geri">
+                        ← Geri Dön
+                    </a>
                 </div>
             </form>
         </div>

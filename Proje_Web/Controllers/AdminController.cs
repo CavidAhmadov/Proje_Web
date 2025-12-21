@@ -35,6 +35,15 @@ namespace Proje_Web.Controllers
         [HttpPost]
         public IActionResult Add_an(Antrenor model)
         {
+            // 1. Veritabanında aynı isimde başka bir hoca var mı kontrol et
+            bool varMi = _context.Antrenor_Tablo.Any(h => h.isim == model.isim);
+
+            if (varMi)
+            {
+                // Eğer varsa, hata mesajı ekle ve sayfayı yenilemeden kullanıcıya göster
+                ModelState.AddModelError("isim", "Bu isimde bir antrenör zaten kayıtlı!");
+                return View(model);
+            }
             // Formdan ne gelirse gelsin, ID'yi 0 yapıyoruz ki duplicate key hatası vermesin
             model.Id = model.isim;
 
